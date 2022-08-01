@@ -68,7 +68,8 @@ app.post('/login', async (req, res)=>{
             }else{
                 cryptr = new Cryptr(process.env.DEEP_KEY)
                 let id = cryptr.encrypt(userId)
-                res.send(id)
+                let fNameData = cryptr.encrypt(user.fName)
+                res.send(id, fNameData)
             }
         }else{
             console.log("Wrong pass")
